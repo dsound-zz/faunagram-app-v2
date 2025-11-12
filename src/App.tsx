@@ -5,6 +5,10 @@ import { useAuth } from './hooks/useAuth';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
 import HomePage from './pages/HomePage';
+import UsersPage from './pages/UsersPage';
+import AnimalsPage from './pages/AnimalsPage';
+import PostSightingPage from './pages/PostSightingPage';
+import UserProfilePage from './pages/UserProfilePage';
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { user, isLoading } = useAuth();
@@ -41,6 +45,38 @@ function App() {
               element={
                 <ProtectedRoute>
                   <HomePage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/users"
+              element={
+                <ProtectedRoute>
+                  <UsersPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/users/:id"
+              element={
+                <ProtectedRoute>
+                  <UserProfilePage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/animals"
+              element={
+                <ProtectedRoute>
+                  <AnimalsPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/post-sighting"
+              element={
+                <ProtectedRoute>
+                  <PostSightingPage />
                 </ProtectedRoute>
               }
             />

@@ -4,6 +4,7 @@ import { sightingsApi } from '../api/sightings';
 import { Card } from '../components/ui/Card';
 import { Avatar } from '../components/ui/Avatar';
 import { Button } from '../components/ui/Button';
+import { CommentsSection } from '../components/comments/CommentsSection';
 
 export default function HomePage() {
   const { data: sightings, isLoading, error } = useQuery({
@@ -59,9 +60,9 @@ export default function HomePage() {
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {sightings.map((sighting) => (
           <Card key={sighting.id} hover>
-            {sighting.image_path && (
+            {sighting.image_url && (
               <img
-                src={sighting.image_path}
+                src={sighting.image_url}
                 alt={sighting.title}
                 className="w-full h-48 object-cover rounded-t-card mb-4"
               />
@@ -85,7 +86,7 @@ export default function HomePage() {
                 </span>
               </div>
             )}
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between mb-4">
               <Button
                 variant="ghost"
                 size="sm"
@@ -100,6 +101,12 @@ export default function HomePage() {
                 {new Date(sighting.created_at).toLocaleDateString()}
               </span>
             </div>
+
+            {/* Comments Section */}
+            <CommentsSection
+              commentableType="Sighting"
+              commentableId={sighting.id}
+            />
           </Card>
         ))}
       </div>

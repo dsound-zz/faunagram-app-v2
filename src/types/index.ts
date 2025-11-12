@@ -26,21 +26,30 @@ export interface Sighting {
   user_id: number;
   animal_id: number;
   image_path?: string;
+  image_url?: string;
   likes: number;
   created_at: string;
   updated_at: string;
   user?: User;
   animal?: Animal;
+  comments_count?: number;
 }
 
 export interface Comment {
   id: number;
   body: string;
   user_id: number;
-  username: string;
+  username?: string;
   commentable_type: string;
   commentable_id: number;
   created_at: string;
+  updated_at?: string;
+  user?: {
+    id: number;
+    username: string;
+    name: string;
+    avatar_url?: string;
+  };
 }
 
 export interface AuthResponse {
