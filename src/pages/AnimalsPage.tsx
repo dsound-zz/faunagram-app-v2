@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { animalsApi } from '../api/animals';
 import { Card } from '../components/ui/Card';
+import { AnimalImage } from '../components/ui/AnimalImage';
 
 export default function AnimalsPage() {
   const { data: animals, isLoading, error } = useQuery({
@@ -44,13 +45,12 @@ export default function AnimalsPage() {
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {animals.map((animal) => (
           <Card key={animal.id} hover>
-            {animal.image && (
-              <img
-                src={animal.image}
-                alt={animal.name}
-                className="w-full h-48 object-cover rounded-t-card mb-4"
-              />
-            )}
+            <AnimalImage
+              src={animal.image}
+              alt={animal.name}
+              animalName={animal.name}
+              className="w-full h-48 object-cover rounded-t-card mb-4"
+            />
             <h3 className="text-xl font-bold text-gray-900 mb-2">
               {animal.name}
             </h3>

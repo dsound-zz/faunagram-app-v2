@@ -4,6 +4,7 @@ import { sightingsApi } from '../api/sightings';
 import { Card } from '../components/ui/Card';
 import { Avatar } from '../components/ui/Avatar';
 import { Button } from '../components/ui/Button';
+import { AnimalImage } from '../components/ui/AnimalImage';
 import { CommentsSection } from '../components/comments/CommentsSection';
 
 export default function HomePage() {
@@ -61,7 +62,7 @@ export default function HomePage() {
         {sightings.map((sighting) => (
           <Card key={sighting.id} hover>
             {sighting.image_url && (
-              <img
+              <AnimalImage
                 src={sighting.image_url}
                 alt={sighting.title}
                 className="w-full h-48 object-cover rounded-t-card mb-4"
