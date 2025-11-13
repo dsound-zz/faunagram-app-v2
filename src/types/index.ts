@@ -15,6 +15,7 @@ export interface Animal {
   family?: string;
   genus?: string;
   species?: string;
+  cls?: string;
   image?: string;
   description?: string;
 }

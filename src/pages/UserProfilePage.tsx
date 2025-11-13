@@ -1,5 +1,5 @@
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { useQuery, useMutation } from '@tanstack/react-query';
 import { useAuth } from '../hooks/useAuth';
 import { usersApi } from '../api/users';
 import { sightingsApi } from '../api/sightings';
@@ -11,7 +11,6 @@ export default function UserProfilePage() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const { user: currentUser } = useAuth();
-  const queryClient = useQueryClient();
   const userId = id ? parseInt(id) : 0;
   const isOwnProfile = currentUser?.id === userId;
 
